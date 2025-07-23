@@ -9,7 +9,7 @@ export default function Page() {
 
   useEffect(() => {
     // Replace this URL with your Azure Function when ready
-    axios.get('https://greenit-backend-api.azurewebsites.net/api/emissions')
+    axios.get('https://greenit-backend-api.azurewebsites.net/api/emissions?')
       .then((response) => {
         const details = response.data.details;
         setEmissionsData([
