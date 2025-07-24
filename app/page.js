@@ -34,29 +34,39 @@ export default function Page() {
 
   return (
     <main className="flex flex-col items-center justify-start min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-green-600 mb-6">GreenIT Analytics Dashboard</h1>
+      <h1 className="text-4xl font-bold text-green-600 mb-8">GreenIT Analytics Dashboard</h1>
 
-      <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
-        <input
-          type="number"
-          value={vmHours}
-          onChange={(e) => setVmHours(e.target.value)}
-          className="p-2 border rounded w-64"
-          placeholder="VM Hours"
-        />
-        <input
-          type="number"
-          value={storageGb}
-          onChange={(e) => setStorageGb(e.target.value)}
-          className="p-2 border rounded w-64"
-          placeholder="Storage GB"
-        />
-        <button
-          onClick={fetchEmissions}
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          {loading ? 'Loading...' : 'Calculate Emissions'}
-        </button>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 w-full max-w-3xl">
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium text-gray-700">VM Hours</label>
+          <input
+            type="number"
+            value={vmHours}
+            onChange={(e) => setVmHours(e.target.value)}
+            className="p-2 border rounded"
+            placeholder="e.g., 300"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm font-medium text-gray-700">Storage (GB)</label>
+          <input
+            type="number"
+            value={storageGb}
+            onChange={(e) => setStorageGb(e.target.value)}
+            className="p-2 border rounded"
+            placeholder="e.g., 150"
+          />
+        </div>
+
+        <div className="flex flex-col justify-end">
+          <button
+            onClick={fetchEmissions}
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            {loading ? 'Loading...' : 'Calculate Emissions'}
+          </button>
+        </div>
       </div>
 
       <PieChart width={400} height={300}>
